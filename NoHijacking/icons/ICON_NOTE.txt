@@ -1,0 +1,26 @@
+# Icon Note
+
+The extension includes an SVG icon (`icon128.svg`). For the extension to work properly in Chrome/Edge, you need PNG versions of the icons.
+
+## Quick Fix
+
+You can either:
+
+1. **Use online converter**: Convert `icon128.svg` to PNG at https://cloudconvert.com/svg-to-png
+   - Create 3 sizes: 16x16, 48x48, 128x128
+   - Save as `icon16.png`, `icon48.png`, `icon128.png`
+
+2. **Use any image editor** (Paint, GIMP, Photoshop, etc.):
+   - Open the SVG
+   - Export as PNG in the required sizes
+
+3. **Temporary workaround**: Comment out the `icons` section in `manifest.json` to test without icons
+
+## Or Use Simple Placeholder
+
+Create simple colored squares as temporary icons:
+- 16x16 purple square → `icon16.png`
+- 48x48 purple square → `icon48.png`
+- 128x128 purple square → `icon128.png`
+
+The extension will work fine without icons, they're just for visual appeal!

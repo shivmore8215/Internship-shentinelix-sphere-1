@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Logs - Clipboard Hijacking Simulation</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <div class="simulation-banner">
+    📊 Administrator Log Viewer
+  </div>
+
+  <div class="container">
+    <header class="header">
+      <h1>📊 Event Logs</h1>
+      <p class="text-muted">Review clipboard hijacking demonstration events</p>
+
+      <nav class="nav">
+        <a href="/" class="nav-link">Demo</a>
+        <a href="/prevention" class="nav-link">Prevention Tips</a>
+        <a href="/safety" class="nav-link">Safety & Ethics</a>
+        <a href="/admin" class="nav-link">Admin Logs</a>
+      </nav>
+    </header>
+
+    <h3>📈 Statistics</h3>
+    <div class="command-box">
+      <strong>Total Events:</strong> <span id="statTotal">0</span><br>
+      <strong>Most Recent:</strong> <span id="statRecent">N/A</span><br>
+      <strong>Most Common Command:</strong> <span id="statCommon">N/A</span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>ℹ️ About These Logs</h3>
+    <p class="text-muted">
+      These logs record clipboard hijacking events from the demonstration. They include:
+    </p>
+    <ul class="text-muted" style="margin-left: 1.5rem;">
+      <li>Timestamp of the event</li>
+      <li>Original command copied</li>
+      <li>Modified command placed in clipboard</li>
+    </ul>
+  </div>
+  </div>
+
+  <!-- Events Table -->
+  <div class="card">
+    <h2>📋 Event Log</h2>
+    <div id="loadingMessage" class="text-center text-muted">
+      Loading events...
+    </div>
+
+    <div id="noEventsMessage" class="hidden">
+      <div class="alert alert-info">
+        No events logged yet. Try the <a href="/" style="color: var(--accent-cyan);">demonstration</a> to generate
+        some events!
+      </div>
+    </div>
+
+    <div id="eventsTableContainer" class="hidden">
+      <div class="table-container">
+        <table id="eventsTable">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Original Command</th>
+              <th>Modified Command</th>
+              <th>Event Type</th>
+            </tr>
+          </thead>
+          <tbody id="eventsTableBody">
+            <!-- Events will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center text-muted mt-xl">
+    <p>🔒 These logs are stored locally and never transmitted externally</p>
+  </footer>
+  </div>
+
+  <script src="/js/admin.js"></script>
+</body>
+
+</html>

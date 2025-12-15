@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prevention Tips - Clipboard Hijacking Simulation</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <div class="simulation-banner">
+    📚 Prevention & Protection Guide
+  </div>
+
+  <div class="container">
+    <header class="header">
+      <h1>🛡️ How to Protect Yourself</h1>
+      <p class="text-muted">Essential techniques to prevent clipboard hijacking attacks</p>
+
+      <nav class="nav">
+        <a href="/" class="nav-link">Demo</a>
+        <a href="/prevention" class="nav-link">Prevention Tips</a>
+        <a href="/safety" class="nav-link">Safety & Ethics</a>
+        <a href="/admin" class="nav-link">Admin Logs</a>
+      </nav>
+    </header>
+
+    <!-- Best Practices -->
+    <div class="card mb-lg">
+      <h2>✅ Best Practices</h2>
+
+      <div class="comparison-container">
+        <div class="comparison-item original">
+          <h3>1. Always Review Before Executing</h3>
+          <p>Never blindly run commands without understanding what they do. Take these steps:</p>
+          <ul style="margin-left: 1.5rem;">
+            <li>Read the entire command carefully</li>
+            <li>Paste into a text editor first to inspect</li>
+            <li>Look for suspicious characters: <code>&&</code>, <code>|</code>, <code>;</code></li>
+            <li>Check for commands you don't recognize</li>
+          </ul>
+        </div>
+
+        <div class="comparison-item original">
+          <h3>2. Type Commands Manually</h3>
+          <p>When possible, type commands yourself instead of copying:</p>
+          <ul style="margin-left: 1.5rem;">
+            <li>Slower but much safer</li>
+            <li>Forces you to understand each part</li>
+            <li>Prevents clipboard hijacking entirely</li>
+            <li>Good practice for learning</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dangerous Command Patterns -->
+    <div class="card mb-lg">
+      <h2>⚠️ Dangerous Command Patterns to Watch For</h2>
+      <p class="text-muted mb-md">Be extra careful when you see these in commands:</p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Pattern</th>
+              <th>Risk Level</th>
+              <th>What It Does</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>rm -rf /</code> or <code>del /s /q C:\</code></td>
+              <td><span class="highlight-danger">CRITICAL</span></td>
+              <td>Deletes all files on your system</td>
+            </tr>
+            <tr>
+              <td><code>curl ... | bash</code> or <code>wget ... | sh</code></td>
+              <td><span class="highlight-danger">CRITICAL</span></td>
+              <td>Downloads and executes unknown code</td>
+            </tr>
+            <tr>
+              <td><code>&&</code>, <code>||</code>, <code>;</code></td>
+              <td><span style="color: var(--accent-yellow);">HIGH</span></td>
+              <td>Chains multiple commands together</td>
+            </tr>
+            <tr>
+              <td><code>Invoke-WebRequest</code> + <code>Invoke-Expression</code></td>
+              <td><span class="highlight-danger">CRITICAL</span></td>
+              <td>PowerShell remote code execution</td>
+            </tr>
+            <tr>
+              <td><code>chmod +x</code> followed by execution</td>
+              <td><span style="color: var(--accent-yellow);">HIGH</span></td>
+              <td>Makes files executable and runs them</td>
+            </tr>
+            <tr>
+              <td><code>sudo</code> with unknown commands</td>
+              <td><span style="color: var(--accent-yellow);">HIGH</span></td>
+              <td>Runs commands with admin privileges</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Detection Techniques -->
+    <div class="card mb-lg">
+      <h2>🔍 Detection Techniques</h2>
+
+      <div class="split-view">
+        <div class="panel">
+          <h3>Check Clipboard Content</h3>
+          <p>Before pasting in terminal:</p>
+          <div class="command-box">
+            <strong>Windows:</strong><br>
+            1. Open Notepad<br>
+            2. Paste (Ctrl+V)<br>
+            3. Review content<br>
+            4. Copy again if safe
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Use Terminal Features</h3>
+          <p>Many terminals have safety features:</p>
+          <div class="command-box">
+            <strong>Modern Terminals:</strong><br>
+            • Paste confirmation dialogs<br>
+            • Multi-line paste warnings<br>
+            • Syntax highlighting<br>
+            • Command preview
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trusted Sources -->
+    <div class="card mb-lg">
+      <h2>✅ Trusted Sources for Commands</h2>
+      <p>Only copy commands from these types of sources:</p>
+
+      <div class="comparison-container">
+        <div class="comparison-item original">
+          <strong>✅ SAFE Sources:</strong>
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+            <li>Official documentation (docs.microsoft.com, man pages, etc.)</li>
+            <li>Well-known tutorial sites (StackOverflow with high votes)</li>
+            <li>Official GitHub repositories</li>
+            <li>Your own notes and scripts</li>
+            <li>Verified company internal wikis</li>
+          </ul>
+        </div>
+
+        <div class="comparison-item modified">
+          <strong>❌ RISKY Sources:</strong>
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+            <li>Random blog posts without verification</li>
+            <li>Social media posts (Twitter, Reddit, etc.)</li>
+            <li>Unverified forum posts</li>
+            <li>Shortened URLs (bit.ly, tinyurl, etc.)</li>
+            <li>Emails from unknown senders</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Real-World Examples -->
+    <div class="card mb-lg">
+      <h2>🌍 Real-World Clipboard Hijacking Attacks</h2>
+
+      <div class="alert alert-warning mb-md">
+        <strong>Case Study 1: Cryptocurrency Theft</strong><br>
+        Malware monitors clipboard for cryptocurrency wallet addresses and replaces them with attacker's address. Users
+        unknowingly send funds to attackers.
+      </div>
+
+      <div class="alert alert-warning mb-md">
+        <strong>Case Study 2: Terminal Command Injection</strong><br>
+        Malicious websites modify copied commands to include backdoors, data exfiltration, or system compromise code.
+      </div>
+
+      <div class="alert alert-warning">
+        <strong>Case Study 3: Social Engineering</strong><br>
+        Attackers share "helpful" commands on forums that contain hidden malicious payloads using Unicode tricks or
+        command chaining.
+      </div>
+    </div>
+
+    <!-- Browser Security -->
+    <div class="card mb-lg">
+      <h2>🔒 Browser Security Features</h2>
+      <p>Modern browsers have some protections:</p>
+
+      <ul style="color: var(--text-secondary); margin-left: 1.5rem;">
+        <li><strong>Clipboard API Permissions:</strong> Websites must request permission to access clipboard</li>
+        <li><strong>HTTPS Requirement:</strong> Clipboard API only works on secure (HTTPS) sites</li>
+        <li><strong>User Gesture Required:</strong> Clipboard access typically requires user interaction</li>
+        <li><strong>Browser Extensions:</strong> Some extensions can monitor and protect clipboard</li>
+      </ul>
+
+      <div class="alert alert-info mt-md">
+        <strong>💡 Tip:</strong> However, these protections aren't foolproof. The best defense is always user awareness
+        and careful review of commands before execution.
+      </div>
+    </div>
+
+    <!-- Quick Reference -->
+    <div class="card mb-lg">
+      <h2>📋 Quick Reference Checklist</h2>
+      <div class="command-box">
+        Before running ANY command from the internet:<br><br>
+        ☐ Do I understand what this command does?<br>
+        ☐ Did I paste it into a text editor to review?<br>
+        ☐ Are there any suspicious characters (&&, |, ;)?<br>
+        ☐ Does it contain dangerous commands (rm, del, curl | bash)?<br>
+        ☐ Is the source trustworthy and verified?<br>
+        ☐ Do I really need to run this command?<br>
+        ☐ Have I backed up important data first?<br><br>
+        <strong style="color: var(--accent-cyan);">If you answered "NO" to any of these, DO NOT run the
+          command!</strong>
+      </div>
+    </div>
+
+    <div class="text-center mt-xl">
+      <a href="/" class="btn btn-primary">← Back to Demo</a>
+      <a href="/safety" class="btn btn-secondary">Safety Guidelines →</a>
+    </div>
+
+    <footer class="text-center text-muted mt-xl">
+      <p>Stay safe and always verify before you execute! 🛡️</p>
+    </footer>
+  </div>
+</body>
+
+</html>

