@@ -1,0 +1,63 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║        CLIPBOARD HIJACKING SIMULATION - QUICK COMMAND REFERENCE              ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+📋 SETUP COMMANDS
+═════════════════
+
+npm install
+  → Install all project dependencies (run this first)
+
+npm start
+  → Start the web server on http://localhost:8055
+
+node server.js
+  → Alternative command to start the server
+
+
+📌 ACCESS URLS
+══════════════
+
+http://localhost:8055/
+  → Main clipboard hijacking demo page
+
+http://localhost:8055/prevention
+  → Prevention guide and security tips
+
+http://localhost:8055/safety
+  → Safety information and best practices
+
+http://localhost:8055/admin
+  → Admin panel to view logged events
+
+
+🛡️ BROWSER EXTENSION (NoHijacking)
+═══════════════════════════════════
+
+chrome://extensions/
+  → Open Chrome extensions page
+
+edge://extensions/
+  → Open Edge extensions page
+
+Steps:
+  1. Enable "Developer mode" (toggle in top right)
+  2. Click "Load unpacked"
+  3. Select the "NoHijacking" folder
+  4. Extension is now active
+
+
+⚙️ TROUBLESHOOTING
+══════════════════
+
+node --version
+  → Check if Node.js is installed
+
+npm --version
+  → Check if npm is installed
+
+CTRL + C
+  → Stop the running server
+
+
+═══════════════════════════════════════════════════════════════════════════════
